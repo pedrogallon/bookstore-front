@@ -1,0 +1,21 @@
+:root{
+    --yellow: #fd0;
+    --blackish: #202020;
+    --lightgraybg: #ebebeb;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: var(--blackish);
+    background: var(--lightgraybg);
+}
+
+body, input, button, textarea {
+    font: 600 18px sans-serif;
+}
