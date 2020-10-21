@@ -59,8 +59,8 @@ div.book-display .book-show-link{
 div.book-display .book-show-link button{
     background: var(--lightgraybg);
     width: 100%;
-    padding: 10px 0;
+    padding: 8px 2px;
     text-align: center;
-    border: 1px solid var(--blackish);
+    border: none;
     border-radius: 5px;
 }

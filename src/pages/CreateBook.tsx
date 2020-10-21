@@ -1,6 +1,14 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import Sidenav from "../components/Sidenav";
+import InputMask from "react-input-mask";
+import NumberFormat from "react-number-format";
+import { useHistory } from "react-router-dom";
+import swal from 'sweetalert2'
+import api from "../services/api";
+
 import "../styles/pages/createbook.css";
+
+
 
 /*
 {
@@ -15,13 +23,53 @@ import "../styles/pages/createbook.css";
 }*/
 
 function CreateBook() {
-  const [name, setName] = useState<string>("");
-  const [author, setAuthor] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [isbn, setIsbn] = useState<string>("");
-  const [image_url, setImgUrl] = useState<string>("");
-  const [price, setPrice] = useState<number>(0.0);
-  const [publication_date, setPublicationDate] = useState<string>("");
+  const history = useHistory();
+
+  const [name, setName] = useState<string>("Book Name");
+  const [author, setAuthor] = useState<string>("Author");
+  const [description, setDescription] = useState<string>("Description");
+  const [isbn, setIsbn] = useState<string>("1234512345");
+  const [image_url, setImgUrl] = useState<string>("https://google.com");
+  const [price, setPrice] = useState<number>(10.0);
+  const [publication_date, setPublicationDate] = useState<string>("2020-10-10");
+
+
+
+
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    const data = new FormData();
+
+    data.append("name", name);
+    data.append("author", author);
+    data.append("description", description);
+    data.append("isbn", isbn);
+    data.append("image_url", image_url);
+    data.append("price", price.toFixed(2));
+    data.append("publication_date", publication_date);
+
+    console.log(
+      data.get("name"), data.get("author"), data.get("description"), data.get("isbn"), data.get("price"), data.get("publication_date")
+    )
+
+    await api.post("/books", data)
+      .then((res) => {
+        console.log(res);
+        swal.fire("Success!", "Book created!", "success").then(() => {
+          history.push("/");
+        });
+      })
+      .catch((res) => {
+        console.log("error: " + res);
+        swal.fire(
+          "Oh no!",
+          "We got an error. Try again later!",
+          "error"
+        );
+      });
+      
+  }
 
   return (
     <div id="page-create">
@@ -32,7 +80,7 @@ function CreateBook() {
         </header>
 
         <div className="form-container">
-          <form className="create-book">
+          <form className="create-book" onSubmit={handleSubmit}>
             <fieldset>
               <div className="input-block">
                 <label htmlFor="name">Name:</label>
@@ -41,6 +89,7 @@ function CreateBook() {
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   name="name"
+                  required
                 />
               </div>
               <div className="input-block">
@@ -50,6 +99,7 @@ function CreateBook() {
                   onChange={(e) => setAuthor(e.target.value)}
                   type="text"
                   name="author"
+                  required
                 />
               </div>
               <div className="input-block">
@@ -58,6 +108,7 @@ function CreateBook() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   name="description"
+                  required
                 />
               </div>
               <div className="input-block">
@@ -69,6 +120,8 @@ function CreateBook() {
                   name="isbn"
                   minLength={10}
                   maxLength={10}
+                  size={10}
+                  required
                 />
               </div>
               <div className="input-block">
@@ -78,20 +131,26 @@ function CreateBook() {
                   onChange={(e) => setImgUrl(e.target.value)}
                   type="url"
                   name="image_url"
+                  required
                 />
               </div>
-              <div className="input-block">
-                <label htmlFor="price">Price:</label>
+              <div className="input-block input-block-half">
+                <label htmlFor="price">Price ($):</label>
                 <input
+                  // decimalSeparator={true}
+                  // displayType={'text'}
                   value={price}
-                  onChange={(e) => setPrice(parseFloat(e.target.value))}
-                  type="text"
+                  onChange={(e) =>
+                    setPrice(parseFloat(parseFloat(e.target.value).toFixed(2)))
+                  }
+                  type="number"
                   name="price"
                   min={0}
                   step="any"
+                  required
                 />
               </div>
-              <div className="input-block">
+              <div className="input-block input-block-half">
                 <label htmlFor="publication_date">Publication date:</label>
                 <input
                   value={publication_date}
@@ -99,9 +158,13 @@ function CreateBook() {
                   type="date"
                   name="publication_date"
                   max={new Date().toISOString().split("T")[0]}
+                  required
                 />
               </div>
             </fieldset>
+            <button className="confirm-button" type="submit">
+              Create
+            </button>
           </form>
         </div>
       </main>

@@ -10,8 +10,8 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Books} />
-        <Route path="/create" component={CreateBook} />
-        <Route path="/:id" component={ShowBookDetails} />
+        <Route path="/create" exact component={CreateBook} />
+        <Route path="/book/:id" component={ShowBookDetails} />
       </Switch> 
     </BrowserRouter> 
   );

@@ -1,7 +1,8 @@
 :root{
     --yellow: #fd0;
+    --yellow-darker: rgb(236, 206, 5);
     --blackish: #202020;
-    --lightgraybg: #ebebeb;
+    --lightgraybg: #f3f3f3;
 
 }
 
