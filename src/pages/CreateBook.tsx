@@ -25,13 +25,13 @@ import "../styles/pages/createbook.css";
 function CreateBook() {
   const history = useHistory();
 
-  const [name, setName] = useState<string>("Book Name");
-  const [author, setAuthor] = useState<string>("Author");
-  const [description, setDescription] = useState<string>("Description");
-  const [isbn, setIsbn] = useState<string>("1234512345");
-  const [image_url, setImgUrl] = useState<string>("https://google.com");
-  const [price, setPrice] = useState<number>(10.0);
-  const [publication_date, setPublicationDate] = useState<string>("2020-10-10");
+  const [name, setName] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [isbn, setIsbn] = useState<string>("");
+  const [image_url, setImgUrl] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
+  const [publication_date, setPublicationDate] = useState<string>("");
 
 
 
