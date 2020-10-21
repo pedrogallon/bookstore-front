@@ -1,26 +1,71 @@
-#page-books{
-    display: flex;
-    min-height: 100vh;
+#page-books {
+  display: flex;
+  min-height: 100vh;
 }
 
-#page-books main{
-    flex: 1;
-    margin-left: 240px;
+#page-books main {
+  flex: 1;
+  margin: 0 100px 0 240px;
 }
 
-#page-books main h2{
-    margin-top: 80px;
+#page-books .books-container {
+  background: white;
+  min-height: 60vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  padding: 30px;
+  box-shadow: 0 0 15px #ddd;
 }
 
-#page-books .books-container{
-    background: white;
-    min-height: 60vh;
-    margin: 30px 100px 0px 0px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: flex-start;
-    padding: 30px;
+#page-books main header {
+  margin: 80px 0 15px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+#page-books main header h1.page-title {
+  -ms-flex-item-align: start;
+}
+
+#page-books main header div.search-area {
+  -ms-flex-item-align: end;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  box-shadow: 0 0 15px #ddd;
+}
+
+#page-books main header div.search-area input {
+  height: 40px;
+  width: 450px;
+  padding-left: 15px;
+
+  border: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+#page-books main header div.search-area input:focus{
+    border: 0;
+    box-shadow: inset 0 0 10px #ddd;
+}
+
+#page-books main header div.search-area button {
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0 10px 10px 0;
+
+  justify-content: center;
+  align-content: center;
+  background-color: var(--yellow);
+
 }

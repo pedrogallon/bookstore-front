@@ -27,7 +27,7 @@ export default function BookDisplay({
       <p className="book-author">{`by ${author}`}</p>
 
       <p className="book-price">{`$${price.toFixed(2).toString().replace(".",",")}`}</p>
-      <Link to={`/books/${id}`} className="book-show-link">
+      <Link to={`/${id}`} className="book-show-link">
         <button>Show Details</button>
       </Link>
     </div>
