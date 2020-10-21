@@ -16,6 +16,7 @@ interface Book {
 
 function Books() {
   const [books, setBooks] = useState<Book[]>([]);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     api.get("/books").then((res) => {
@@ -23,17 +24,27 @@ function Books() {
     });
   }, books);
 
+
+  let filteredBooks = books.filter(
+    (book)=>{
+      return book.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    }
+  )
+
+
   return (
     <div id="page-books">
       <Sidenav />
       <main>
         <header>
           <h1 className="page-title">Browse Books</h1>
-
+          <div className="search-area">
+            <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" name="search" /><button disabled><ImSearch size={20} color='var(--blackish)'/></button>
+          </div>
         </header>
 
         <div className="books-container">
-          {books.map((book) => {
+          {filteredBooks.map((book) => {
             return (
               <BookDisplay
                 id={book.id}

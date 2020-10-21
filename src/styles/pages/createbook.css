@@ -1,0 +1,79 @@
+#page-create {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  #page-create main {
+    flex: 1;
+    margin: 0 100px 0 240px;
+  }
+  
+  #page-create .form-container {
+    background: white;
+    min-height: 60vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    padding: 30px;
+    box-shadow: 0 0 15px #ddd;
+  }
+  
+  #page-create main header {
+    margin: 80px 0 15px 0;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+  
+  #page-create main header h1.page-title {
+    -ms-flex-item-align: start;
+  }
+
+  form.create-book{
+      flex: 1;
+  }
+  
+  form.create-book fieldset {
+    border: 0;
+  }
+  
+  form.create-book fieldset + fieldset {
+    margin-top: 80px;
+  }
+  
+  form.create-book .input-block + .input-block {
+    margin-top: 24px;
+  }
+  
+  form.create-book .input-block label {
+    display: flex;
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
+  
+  form.create-book .input-block input,
+  form.create-book .input-block textarea {
+    width: 100%;
+    background: #f3f3f3;
+    border: 1px solid #bebebe;
+    border-radius: 10px;
+    outline: none;
+  }
+  
+  form.create-book .input-block input {
+    height: 64px;
+    padding: 0 16px;
+  }
+  
+  form.create-book .input-block textarea {
+    min-height: 120px;
+    max-height: 240px;
+    resize: vertical;
+    padding: 16px;
+    line-height: 28px;
+  }

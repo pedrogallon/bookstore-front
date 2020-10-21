@@ -52,7 +52,9 @@
 }
 
 #page-books main header div.search-area input:focus{
-    border: 0;
+  border: none;
+  border-color: transparent;
+  outline:none;
     box-shadow: inset 0 0 10px #ddd;
 }
 
@@ -67,5 +69,6 @@
   justify-content: center;
   align-content: center;
   background-color: var(--yellow);
+
 
 }
