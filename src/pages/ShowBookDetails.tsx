@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { ImArrowLeft, ImCart } from "react-icons/im";
+import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import Sidenav from "../components/Sidenav";
 import api from "../services/api";
 
@@ -27,6 +28,8 @@ function ShowBookDetails() {
   const params = useParams<BookParams>();
   const { id } = params;
 
+
+
   const [book, setBook] = useState<Book>();
 
   useEffect(() => {
@@ -34,6 +37,18 @@ function ShowBookDetails() {
       setBook(res.data);
     });
   }, []);
+
+  const [likeColor, setLikeColor] = useState<string>();
+  const [dislikeColor, setDislikeColor] = useState<string>();
+  function handleLikeClicked(){
+    setLikeColor("var(--yellow)");
+    setDislikeColor("#afafaf");
+  }
+
+  function handleDislikeClicked(){
+    setDislikeColor("var(--yellow)");
+    setLikeColor("#afafaf");
+  }
 
   return (
     <div id="page-details">
@@ -56,11 +71,26 @@ function ShowBookDetails() {
               <p className="author">by {book?.author}</p>
             </div>
             <div className="price-block">
-              <p>${book?.price.toFixed(2).replace(".", ",")}</p>
+              <p className="price">
+                ${book?.price.toFixed(2).replace(".", ",")}
+              </p>
               <button>
                 <ImCart />
                 Add to cart
               </button>
+              <p className="like-text">Do you like this book?</p>
+              <div className="like-bt-container">
+                <AiFillLike
+                  size={40}
+                  color={likeColor}
+                  onClick={handleLikeClicked}
+                />{" "}
+                <AiFillDislike
+                  size={40}
+                  color={dislikeColor}
+                  onClick={handleDislikeClicked}
+                />
+              </div>
             </div>
           </div>
           <div className="bottom-side">

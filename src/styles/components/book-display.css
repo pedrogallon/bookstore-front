@@ -50,6 +50,28 @@ div.book-display .book-price{
     width: 100%;
     text-align: center;
 }
+
+div.book-display .like-bt-container{
+    margin: auto 25% 5px 25%;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    width: 50%;
+    text-align: center;
+
+    display: flex;
+  justify-content: space-between;
+
+}
+
+
+  
+div.book-display .like-bt-container svg{
+    width: 100%;
+  }
+    
+
+
 div.book-display .book-show-link{
     /* margin: 15px 20px 0 20px; */
     margin-top: 0;

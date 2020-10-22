@@ -81,7 +81,7 @@
     
 }
 
-#page-details .detail-container .top-side .price-block p{
+#page-details .detail-container .top-side .price-block .price{
     font-size: 30px;
     width: 100%;
     text-align: center;
@@ -117,6 +117,23 @@
     border-color: transparent;
   
   }
+
+  #page-details .detail-container .top-side .price-block .like-text{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#page-details .detail-container .top-side .price-block .like-bt-container{
+  width: 80%;
+  margin: 10px 10%;
+  display: flex;
+justify-content: space-between;
+}
+
+#page-details .detail-container .top-side .price-block .like-bt-container svg{
+  width: 100%;
+}
   
 
 #page-details .detail-container .top-side .text-block>.name{
